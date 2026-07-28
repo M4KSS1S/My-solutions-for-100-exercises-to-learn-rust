@@ -10,13 +10,19 @@ pub struct Ticket {
     status: String,
 }
 
+
+//String implements Deref<Target = str>, which means:
+// String can be treated as a &str automatically
+// When you call .trim() on a String, Rust automatically converts it to a &str first
+// This is called deref coercion
+
 impl Ticket {
     pub fn title(&self) -> &str {
-        todo!()
+        &self.title.trim()
     }
 
     pub fn description(&self) -> &str {
-        todo!()
+        &self.description.trim()
     }
 }
 
