@@ -1,5 +1,9 @@
 // TODO: Implement `Ticket::assigned_to` using `Option` as the return type.
 
+use std::fmt::format;
+
+use crate::Status::InProgress;
+
 #[derive(Debug, PartialEq)]
 struct Ticket {
     title: String,
@@ -36,7 +40,10 @@ impl Ticket {
         }
     }
     pub fn assigned_to(&self) -> Option<&String> {
-        todo!()
+        match &self.status{
+            InProgress{assigned_to} => Some(assigned_to),
+            _ => None
+        }
     }
 }
 
